@@ -14,24 +14,34 @@
 <body>
     <!--Début couverture de page-->
     <div class="page-wrapper">
-        <!--Début barre latérale-->
-        <nav class="sidebar-wrapper" id="sidebar">
-            <div class="sidebar-brand">
-                <a href ="index.php" class="logo">
-                    <img src="img/logo.jpg" alt="Ampoule">
-                    Gestion Ampoules
-                </a>
-            </div>
-        </nav>
-        <!--Fin barre latérale-->
-
         <!--Début du contenu page-->
         <div class="page-content">
             <!--Début du Header-->
             <header class="header">
+                <div class="header-brand">
+                    <a href ="index.php" class="logo">
+                        <img src="img/logo.jpg" alt="Ampoule">
+                        Gestion ampoules
+                    </a>
+                </div>
                 <a class="link-btn" id="nav-btn" href="#">
                     <i class="material-icons icon icon-menu">menu</i>
                 </a>
+                <nav class="header-nav">
+                    <ul>
+                        <li><a href="index.php">Acceuil</a></li>
+                        <li><a href="edit.php">Ajouter </a></li>
+                        <li><a href="#">Modifier</a></li>
+                        <li><a href="#">Supprimer</a></li>
+                    </ul>
+                    <div class="header-search">
+                        <input type="text" class="search-query" placeholder="Chercher une ampoule...">
+                        <a href="#">
+                            <i class="material-icons icon">search</i>
+                        </a>
+                    </div>
+                </nav>
+                    
             <!--Fin du Header-->
             </header>
             
