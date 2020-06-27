@@ -92,7 +92,6 @@
                                 echo '<td>'.$row['position'].'</td>';
                                 echo '<td>'.$row['puissance'].' W</td>';
                                 echo '<td>'.$row['marque'].'</td>';
-                                
                                 echo '<td><a href="edit.php?edit=1&id='.$row['id'].'"><i class="material-icons icon">edit</i></a></td>';
                                 echo '<td><a href="delete.php?id='.$row['id'].'"><i class="material-icons icon">delete_outline</i><a/></td>';
                                 echo '</tr>';
