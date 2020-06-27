@@ -94,7 +94,7 @@
                         exit;
                     }
                     
-                    $date = $data['date_changement'];
+                    $date =     
                     $etage = $data['etage'];
                     $position = $data['position'];
                     $puissance = $data['puissance'];
@@ -174,7 +174,6 @@
                 
                 ?>
                 <div class="form-layout">
-                    
                     <form action="" method="post" class="form-edit">
                         <div class="form-group">
                             <label for="date_changement">Date de changement</label>
@@ -183,13 +182,11 @@
                         <div class="form-group">
                             <label for="etage">Étage</label>
                             <select name="etage" id="etage">
+                                <option value=''>--Choisissez l'étage--</option>
                                 <?php 
-                                    if(!isset($_GET['edit'])){
-                                        echo"<option value=''>--Choisissez l'étage--</option>";
-                                    }
                                     for($i = 1; $i < 12; $i++){
                                         $selected = "";
-                                        if ($etage == "Étage $i"){
+                                        if ($etage == "Etage $i"){
                                             $selected = "selected";
                                         }
                                         echo "<option value=\"Etage $i\" $selected>Etage $i</option>";
@@ -204,7 +201,6 @@
                                     if(!isset($_GET['edit'])){
                                         echo "<option value=''>--Choisissez la position--</option>";
                                     }
-                                    
                                     $Tab_Position = array('Côté gauche','Côté droit','Fond');
                                     foreach($Tab_Position as $item){
                                         $selected = "";
@@ -212,6 +208,7 @@
                                             $selected = "selected";
                                         }
                                         echo  "<option value='$item' $selected>$item</option>";
+                                        
                                     }
                                 ?>
                                 </select>
