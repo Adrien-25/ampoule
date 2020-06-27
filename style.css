@@ -111,6 +111,7 @@ body{
 }
 .header-nav li:hover a{
     color: red;
+    text-decoration: underline;
 }
 .header li a {
     color: #333333;
@@ -234,67 +235,3 @@ body{
     margin: 0 0 1rem 0;
     display: inline-block;
 }
-/*<input type="text" name="etage" id="etage" placeholder="Étage" value="<?=$etage; ?>">*/
-
-/*
-<!--Début Fil d'Ariane -->
-<div class="breadcrumb-layout">
-    <div class="breadcrumb">
-        <?php
-        $home = "Acceuil";
-        $url = getcwd();
-        chdir($url);
-        $content = scandir($url);
-        $path = "";
-        $breadcrumb = explode(DIRECTORY_SEPARATOR, $url);
-        foreach($breadcrumb as $item){
-            $path .= $item.DIRECTORY_SEPARATOR;
-            if(strstr($path, $home)){
-                echo $item;
-            }
-        }
-        ?>
-    </div>
-</div>
-<!--Fin Fil d'Ariane -->*/
-
-
-/*Breadcrumb*/
-/*
-.breadcrumb-layout{
-    padding: 0 1.5rem;
-    margin: 50px 0 0 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.breadcrumb{
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    background: transparent;
-    margin: 0;
-    padding: 1.5rem 0;
-    font-size: .825rem;
-    align-items: center;
-    font-weight: 600;
-}
-
-.breadcrumb .breadcrumb-item.active 
-
-.breadcrumb-item{
-    color: #333333;
-    font-family: 'Open Sans',sans-serif;
-}
-.breadcrumb-item+.breadcrumb-item {
-    padding-left: .5rem;
-}
-.breadcrumb .breadcrumb-item + .breadcrumb-item::before{
-    color: #333333;
-    font-family: 'icomoon' !important;
-    content: '\e9f1';
-    font-size: .85rem;
-    display: inline-block;
-    padding-right: .5rem;   
-}
-*/
