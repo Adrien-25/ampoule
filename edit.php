@@ -102,7 +102,7 @@
                     $id = $data['id'];
                     $id = htmlentities($_GET['id']);
                 } 
-
+                $error_form = array(0,0,0,0,0);
                 //Si on n'a soumis le formulaire    
                 if(count($_POST) > 0){
 
@@ -110,31 +110,36 @@
                         $date = trim($_POST['date_changement']);
                     }else{
                         $error = true;
+                        Echo "Veuillez saisir la date";
                     }
                     if(strlen(trim($_POST['etage']))!==0){
                         $etage = trim($_POST['etage']);
                     }else{
                         $error = true;
+                        Echo "Veuillez saisir l'étage";
                     }
                     if(strlen(trim($_POST['position']))!==0){
                         $position = trim($_POST['position']);
                     }else{
                         $error = true;
+                        Echo "Veuillez saisir la position";
                     }
                     if(strlen(trim($_POST['puissance']))!==0){
                         $puissance = trim($_POST['puissance']);
                     }else{
                         $error = true;
+                        Echo "Veuillez saisir la puissance";
                     }
                     if(strlen(trim($_POST['marque']))!==0){
                         $marque = trim($_POST['marque']);
                     }else{
                         $error = true;
+                        Echo "Veuillez saisir la marque";
                     }
-                
                     if(isset($_POST['edit']) && isset($_POST['id'])){
                         $id = htmlentities($_POST['id']);
                     }
+                    
 
                     //Si pas d'erreur alors on insere dans la base de donnée
                     if($error === false){
@@ -180,7 +185,7 @@
                             <select name="etage" id="etage">
                                 <?php 
                                     if(!isset($_GET['edit'])){
-                                        echo"<option value=''>--Choisissez la position--</option>";
+                                        echo"<option value=''>--Choisissez l'étage--</option>";
                                     }
                                     for($i = 1; $i < 12; $i++){
                                         $selected = "";
@@ -214,7 +219,7 @@
                                
                         </div>
                         <div class="form-group">
-                            <label for="puissance">Puissance</label>
+                            <label for="puissance">Puissance (en W)</label>
                             <input type="text" name="puissance" id="puissance" placeholder="Puissance" value="<?=$puissance; ?>">
                         </div>
                         <div class="form-group">
