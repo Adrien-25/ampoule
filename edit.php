@@ -39,12 +39,7 @@
                         <li><a href="#">Modifier</a></li>
                         <li><a href="#">Supprimer</a></li>
                     </ul>
-                    <div class="header-search">
-                        <input type="text" class="search-query" placeholder="Chercher une ampoule...">
-                        <a href="#">
-                            <i class="material-icons icon">search</i>
-                        </a>
-                    </div>
+                    
                 </nav>
             <!--Fin du Header-->
             </header>
@@ -212,8 +207,7 @@
                                     }
                                 ?>
                                 </select>
-                                
-                               
+                                    
                         </div>
                         <div class="form-group">
                             <label for="puissance">Puissance (en W)</label>
