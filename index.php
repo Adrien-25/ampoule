@@ -34,12 +34,6 @@
                         <li><a href="#">Modifier</a></li>
                         <li><a href="#">Supprimer</a></li>
                     </ul>
-                    <div class="header-search">
-                        <input type="text" class="search-query" placeholder="Chercher une ampoule...">
-                        <a href="#">
-                            <i class="material-icons icon">search</i>
-                        </a>
-                    </div>
                 </nav>
                     
             <!--Fin du Header-->
@@ -50,9 +44,21 @@
                 <div class="heading-layout">
                     <h1>Liste des Ampoules</h1>
                 </div>
-                <a href="edit.php" class="link-btn">
-                    <i class="material-icons icon icon-add">add</i>
-                </a>
+                <div class="nav-sort">
+                    <a href="edit.php" class="link-btn">
+                        <i class="material-icons icon icon-add">add</i>
+                    </a>
+                    <a href="index.php" class="link-btn">
+                        <i class="material-icons icon icon-add">refresh</i>
+                    </a>
+                    
+                    <div class="search-layout">
+                        <form action="" method="post">
+                            <input name="search" type="text" class="search-query" placeholder="Chercher une ampoule...">
+                            <button type="submit" class=""><i class="material-icons icon">search</i></button>
+                        </form>
+                    </div>
+                </div>
                 <!--Début Table-->
                 <div class="table-container">
                     <table class="table custom-table">
@@ -62,7 +68,7 @@
                                 <th>Date de changement</th>
                                 <th>Étage</th>
                                 <th>Position</th>
-                                <th>Puissance de l'ampoule</th>
+                                <th>Puissance de l'ampoule (W)</th>
                                 <th>Marque de l'ampoule</th>
                                 <th></th>
                                 <th></th>
@@ -81,30 +87,57 @@
                             
                             //Gestion des formats des dates en français
                             $intlDateFormater = new IntlDateFormatter('fr_FR', IntlDateFormatter::SHORT,IntlDateFormatter::NONE);
-    
-                            //On parcours le résultat et imprime à l'écran les données
-                            //pour parcourir toutes es lignes on fait une boucle
-                            foreach($result as $row){
-                                echo '<tr>';
-                                echo '<td>'.$row['id'].'</td>';
-                                echo '<td>'.$intlDateFormater->format(strtotime($row['date_changement'])).'</td>';
-                                echo '<td>'.$row['etage'].'</td>';
-                                echo '<td>'.$row['position'].'</td>';
-                                echo '<td>'.$row['puissance'].' W</td>';
-                                echo '<td>'.$row['marque'].'</td>';
-                                echo '<td><a href="edit.php?edit=1&id='.$row['id'].'"><i class="material-icons icon">edit</i></a></td>';
-                                echo '<td><a href="delete.php?id='.$row['id'].'"><i class="material-icons icon">delete_outline</i><a/></td>';
-                                echo '</tr>';
+                            if(!isset($_POST['search'])){
+                                //On parcours le résultat et imprime à l'écran les données
+                                //pour parcourir toutes es lignes on fait une boucle
+                                foreach($result as $row){
+                                    echo '<tr>';
+                                    echo '<td>'.$row['id'].'</td>';
+                                    echo '<td>'.$intlDateFormater->format(strtotime($row['date_changement'])).'</td>';
+                                    echo '<td>'.$row['etage'].'</td>';
+                                    echo '<td>'.$row['position'].'</td>';
+                                    echo '<td>'.$row['puissance'].' W</td>';
+                                    echo '<td>'.$row['marque'].'</td>';
+                                    echo '<td><a href="edit.php?edit=1&id='.$row['id'].'"><i class="material-icons icon">edit</i></a></td>';
+                                    echo '<td><a href="delete.php?id='.$row['id'].'"><i class="material-icons icon">delete_outline</i><a/></td>';
+                                    echo '</tr>';
+                                }
+                            }else{
+                                foreach($result as $row){
+                                    if(($row['id'] == $_POST['search']) || ($row['etage'] == $_POST['search']) || ($row['position'] == $_POST['search']) || ($row['puissance'] == $_POST['search']) ||
+                                    ($row['marque'] == $_POST['search'])){
+                                        echo '<tr>';
+                                        echo '<td>'.$row['id'].'</td>';
+                                        echo '<td>'.$intlDateFormater->format(strtotime($row['date_changement'])).'</td>';
+                                        echo '<td>'.$row['etage'].'</td>';
+                                        echo '<td>'.$row['position'].'</td>';
+                                        echo '<td>'.$row['puissance'].'</td>';
+                                        echo '<td>'.$row['marque'].'</td>';
+                                        echo '<td><a href="edit.php?edit=1&id='.$row['id'].'"><i class="material-icons icon">edit</i></a></td>';
+                                        echo '<td><a href="delete.php?id='.$row['id'].'"><i class="material-icons icon">delete_outline</i><a/></td>';
+                                        echo '</tr>';
+                                        $test = 0;  
+                                    }
+                                }
                             }
                         ?>
                     </table>
                 </div>
                 <!--Fin Table-->
                 <?php
-                //Si le tableau n'a aucun élément il affice raucun stagiaire
-                    if(count($result) === 0){
-                        echo '<p class="text-center font-size-2">Aucune ampoule</p>';
-                    }
+                /*
+                Aucune ampoule -->  Aucune ampoule
+                Ampoule, pas de recherche --> Rien
+                Ampoule, recherche trouvé --> Rien
+                Ampoule, recherche non trouvé --> Aucune ampoule ne correspond à votre recherche
+                */
+                //Si le tableau n'a aucun élément il affice aucun stagiaire
+                if(count($result) === 0){
+                    echo '<p class="text-center font-size-2">Aucune ampoule</p>';
+                }elseif(!isset($test) && isset($_POST['search'])){
+                    //Si la variable test n'est pas déclaré et qu'il n'y a pas de recherche alors il n'y a aucune ampoule selectionné
+                    echo '<p class="text-center font-size-2">Aucune ampoule ne correspond à votre recherche.</p>';
+                }
                 ?>
             <!--Fin contenu principal-->
             </div>
