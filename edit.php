@@ -1,4 +1,3 @@
-
 <?php
     require_once('db.php');
 ?>
@@ -13,10 +12,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-    <!--Début couverture de page-->
-    <div class="page-wrapper">
-        
-
+     <!--Début couverture de page-->
+     <div class="page-wrapper">
         <!--Début du contenu page-->
         <div class="page-content">
             <!--Début du Header-->
@@ -31,9 +28,22 @@
                     <ul>
                         <li><a href="index.php">Acceuil</a></li>
                         <li><a href="edit.php">Ajouter </a></li>
+                        <li><a href="logout.php">Déconnexion</a></li>
                     </ul>
-                    
+                    <div class="user-layout">
+                        <div class="user-content">
+                            <a href="">
+                                <span>Macaron</span>
+                                <img src="img/macron.jpg" alt="Emmanuel Macron">
+                            </a>
+                            
+                        </div>
+                        <a href="logout.php">
+                            <i class="material-icons icon icon-exit">exit_to_app</i>
+                        </a>
+                    <div>
                 </nav>
+                    
             <!--Fin du Header-->
             </header>
             
@@ -91,7 +101,6 @@
                     $id = $data['id'];
                     $id = htmlentities($_GET['id']);
                 } 
-                
                 //Si on n'a soumis le formulaire    
                 if(count($_POST) > 0){
                     if(strlen(trim($_POST['date_changement']))!==0){
