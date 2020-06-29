@@ -24,15 +24,10 @@
                         Gestion ampoules
                     </a>
                 </div>
-                <a class="link-btn" id="nav-btn" href="#">
-                    <i class="material-icons icon icon-menu">menu</i>
-                </a>
                 <nav class="header-nav">
                     <ul>
                         <li><a href="index.php">Acceuil</a></li>
                         <li><a href="edit.php">Ajouter </a></li>
-                        <li><a href="#">Modifier</a></li>
-                        <li><a href="#">Supprimer</a></li>
                     </ul>
                 </nav>
                     
@@ -65,11 +60,11 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Date de changement</th>
+                                <th>Date</th>
                                 <th>Étage</th>
                                 <th>Position</th>
-                                <th>Puissance de l'ampoule (W)</th>
-                                <th>Marque de l'ampoule</th>
+                                <th>Puissance</th>
+                                <th>Marque</th>
                                 <th></th>
                                 <th></th>
                             </tr>   
@@ -111,7 +106,7 @@
                                         echo '<td>'.$intlDateFormater->format(strtotime($row['date_changement'])).'</td>';
                                         echo '<td>'.$row['etage'].'</td>';
                                         echo '<td>'.$row['position'].'</td>';
-                                        echo '<td>'.$row['puissance'].'</td>';
+                                        echo '<td>'.$row['puissance'].' W</td>';
                                         echo '<td>'.$row['marque'].'</td>';
                                         echo '<td><a href="edit.php?edit=1&id='.$row['id'].'"><i class="material-icons icon">edit</i></a></td>';
                                         echo '<td><a href="delete.php?id='.$row['id'].'"><i class="material-icons icon">delete_outline</i><a/></td>';
@@ -145,5 +140,6 @@
             <!--Fin du contenu de la page-->
     </div>
     <!--Fin de couverture de page-->
+<script src="app.js"></script> 
 </body>
 </html>
