@@ -41,7 +41,7 @@
                         <a href="logout.php">
                             <i class="material-icons icon icon-exit">exit_to_app</i>
                         </a>
-                    <div>
+                </div>
                 </nav>
                     
             <!--Fin du Header-->
@@ -59,9 +59,11 @@
                 <div class="heading-layout">
                     <h1><?=$type?> une ampoule</h1>
                 </div>
+                <div class="text-center">
                     <a href=index.php class="link-btn">
                         <i class="material-icons icon icon-home">home</i>
                     </a>
+                </div>
                   
                 <?php
                 //On va vérifier si on réçoit le formulaire
@@ -173,11 +175,15 @@
                 <div class="form-layout">
                     <form action="" method="post" class="form-edit">
                         <div class="form-group">
-                            <label for="date_changement">Date de changement</label>
+                            <div class="label-layout">
+                                <label for="date_changement">Date de changement</label>
+                            </div>
                             <input type="date" name="date_changement" id="date_changement" placeholder="Date de changement" value="<?=$date; ?>">
                         </div>
                         <div class="form-group">
-                            <label for="etage">Étage</label>
+                            <div class="label-layout" >
+                                <label for="etage">Étage</label>
+                            </div>
                             <select name="etage" id="etage">
                                 <option value=''>--Choisissez l'étage--</option>
                                 <?php 
@@ -192,7 +198,9 @@
                                 </select>
                         </div>
                         <div class="form-group">
-                            <label for="position">Position</label>
+                            <div class="label-layout">
+                                <label for="position">Position</label>
+                            </div>
                             <select name="position" id="position">
                                 <?php 
                                     if(!isset($_GET['edit'])){
@@ -212,15 +220,19 @@
                                     
                         </div>
                         <div class="form-group">
-                            <label for="puissance">Puissance (en W)</label>
+                            <div class="label-layout">
+                                <label for="puissance">Puissance (en W)</label>
+                            </div>
                             <input type="text" name="puissance" id="puissance" placeholder="Puissance" value="<?=$puissance; ?>">
                         </div>
                         <div class="form-group">
-                            <label for="marque">Marque</label>
+                            <div class="label-layout">
+                                <label for="marque">Marque</label>
+                                </div>
                             <input type="text" name="marque" id="marque" placeholder="Marque" value="<?=$marque; ?>">
                         </div>
                         
-                        <div>
+                        <div class="form-btn">
                             <?php
                                 if(isset($_GET['id']) && isset($_GET['edit'])){
                                     $textButton = "Modifier";
@@ -263,6 +275,5 @@
             </div>
         </div>
     </div>
-<script src="app.js"></script> 
 </body>
 </html>
