@@ -1,6 +1,4 @@
-<?php
-    require_once('db.php');
-?>
+
 <?php
     require_once('db.php');
 ?>
@@ -26,18 +24,13 @@
                 <div class="header-brand">
                     <a href ="index.php" class="logo">
                         <img src="img/logo.jpg" alt="Ampoule">
-                        Gestion Ampoules
+                        Gestion ampoules
                     </a>
                 </div>
-                <a class="link-btn" id="nav-btn" href="#">
-                    <i class="material-icons icon icon-menu">menu</i>
-                </a>
                 <nav class="header-nav">
                     <ul>
                         <li><a href="index.php">Acceuil</a></li>
                         <li><a href="edit.php">Ajouter </a></li>
-                        <li><a href="#">Modifier</a></li>
-                        <li><a href="#">Supprimer</a></li>
                     </ul>
                     
                 </nav>
@@ -69,6 +62,7 @@
                 $marque = '';
                 $id='';
                 $error = false;
+                $error_form = array(0,0,0,0,0);
                 //Vérifier si on demande on passe un mode edit et non en mode Ajout
                 if(isset($_GET['id']) && isset($_GET['edit'])){
                     $sql = 'SELECT id, date_changement, etage, position, puissance, marque FROM ampoule WHERE id=:id';
@@ -89,7 +83,7 @@
                         exit;
                     }
                     
-                    $date =     
+                    $date = $data['date_changement']; 
                     $etage = $data['etage'];
                     $position = $data['position'];
                     $puissance = $data['puissance'];
@@ -97,39 +91,38 @@
                     $id = $data['id'];
                     $id = htmlentities($_GET['id']);
                 } 
-                $error_form = array(0,0,0,0,0);
+                
                 //Si on n'a soumis le formulaire    
                 if(count($_POST) > 0){
-
                     if(strlen(trim($_POST['date_changement']))!==0){
                         $date = trim($_POST['date_changement']);
                     }else{
                         $error = true;
-                        Echo "Veuillez saisir la date";
+                        $error_form[0] = "La date";
                     }
                     if(strlen(trim($_POST['etage']))!==0){
                         $etage = trim($_POST['etage']);
                     }else{
                         $error = true;
-                        Echo "Veuillez saisir l'étage";
+                        $error_form[1] = "L'étage";
                     }
                     if(strlen(trim($_POST['position']))!==0){
                         $position = trim($_POST['position']);
                     }else{
                         $error = true;
-                        Echo "Veuillez saisir la position";
+                        $error_form[2] = "La position";
                     }
                     if(strlen(trim($_POST['puissance']))!==0){
                         $puissance = trim($_POST['puissance']);
                     }else{
                         $error = true;
-                        Echo "Veuillez saisir la puissance";
+                        $error_form[3] = "La puissance";
                     }
                     if(strlen(trim($_POST['marque']))!==0){
                         $marque = trim($_POST['marque']);
                     }else{
                         $error = true;
-                        Echo "Veuillez saisir la marque";
+                        $error_form[4] = "La marque";
                     }
                     if(isset($_POST['edit']) && isset($_POST['id'])){
                         $id = htmlentities($_POST['id']);
@@ -181,10 +174,10 @@
                                 <?php 
                                     for($i = 1; $i < 12; $i++){
                                         $selected = "";
-                                        if ($etage == "Etage $i"){
+                                        if ($etage == $i){
                                             $selected = "selected";
                                         }
-                                        echo "<option value=\"Etage $i\" $selected>Etage $i</option>";
+                                        echo "<option value=\"$i\" $selected>$i</option>";
                                     }
                                 ?>
                                 </select>
@@ -237,10 +230,30 @@
                             }
                         ?>
                     </form>
-                    
+                    <?php 
+                        echo'<div class="check-layout">';
+                        $mauvaise_saisie = False;
+                        foreach($error_form as $item){
+                            if (!is_int($item)){
+                                $mauvaise_saisie = True;
+                            }
+                        }
+                        if ($mauvaise_saisie == True) {
+                            echo'Veuillez saisir : <br>';
+                        }
+                        
+                        foreach($error_form as $test){
+                            
+                            if (!is_int($test)){
+                                echo '• '.$test.'<br>';
+                            }
+                        }
+                        echo'</div>';
+                    ?>
                 </div>
             </div>
         </div>
     </div>
+<script src="app.js"></script> 
 </body>
 </html>
