@@ -1,5 +1,9 @@
 <?php
-    require_once('db.php')
+  require_once('db.php');
+  session_start();
+  if(!empty($_SESSION['username'])){
+    header('Location: index.php');
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +22,7 @@
   $username = 'Macron';
   $password = 'chocolat';
   $msg = '';
-  session_start();
+
   if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {
     if ($_POST['username'] == $username && $_POST['password'] == $password) {
       $_SESSION['valid'] = true;
