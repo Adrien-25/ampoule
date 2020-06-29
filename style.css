@@ -8,7 +8,6 @@ a{
     text-decoration: none;
 }
 
-
 /*Mise en Page*/
 /*Commun*/
 ul{
@@ -301,16 +300,36 @@ body{
     padding: 1.25rem 1.25rem;
     border-radius: 1rem;
     background-color: #ffffff;
+    margin: 0 auto;
+    display: flex;
+    max-width: 700px;
 }
 .form-edit{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
 }
+
 .form-group{
-    margin: 0 0 1rem 0;
-    display: inline-block;
+    margin: 0 0 3rem 0;
+    display: flex;
+    align-items: center;
 }
+.label-layout{
+    width: 50%;
+}
+.form-group input,.form-group select{
+    width: 100%;
+    font-size: 1.3rem;
+}
+.form-edit .form-btn{
+    text-align: center;
+}
+.form-edit .form-btn .btn{
+    font-size: 1.4rem;
+}
+
 .check-layout{
     margin: 1rem 0 1rem 0;
     color: black;
@@ -334,6 +353,9 @@ body{
     }
     .header-nav ul{
         display: none;
+    }
+    .header-nav{
+        justify-content: flex-end;
     }
    
     /*Table responsive*/
@@ -430,6 +452,15 @@ body{
     .search-layout{
         display: none;
     }
+    .form-group{
+        flex-direction: column;
+    }
+    .label-layout{
+        width: 100%;
+    }
+    .label-layout label{
+        font-size: 1.2rem;
+    }
     /*Table responsive*/
     table, thead, tbody, th, td, tr {
         display: block;
@@ -502,6 +533,18 @@ body{
         justify-content: center;
         background-color: red;
     }
+    .form-group{
+        flex-direction: column;
+    }
+    .label-layout{
+        width: 100%;
+    }
+    .label-layout label{
+        font-size: 1.2rem;
+    }
+    .header-brand{
+        display: none;;
+    }
     .header-brand .logo{
         min-height: 75px;
     }
@@ -516,6 +559,30 @@ body{
     }
     .search-layout{
         display: none;
+    }
+    .header-nav{
+        margin: 0;
+    }
+    .user-layout{
+        margin-right: 1rem;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .user-content a{
+        padding: 17px 1rem;
+    }
+    .user-content a:hover{
+        background-color: red;
+    }
+    .user-content a span{
+        color: white;
+    }
+    .user-content>a{
+        color: white;
+        flex-direction: row-reverse;
+    }
+    .icon-exit {
+        color: white;
     }
     /*Table responsive*/
     table, thead, tbody, th, td, tr {
