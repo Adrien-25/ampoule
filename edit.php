@@ -1,5 +1,10 @@
 <?php
+    session_start();
     require_once('db.php');
+    
+    if(empty($_SESSION['username'])){
+        header('Location: login.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
