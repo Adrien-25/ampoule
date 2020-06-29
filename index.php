@@ -1,5 +1,10 @@
 <?php
-    require_once('db.php');
+session_start();
+require_once('db.php');
+
+if(empty($_SESSION['username'])){
+    header('Location: login.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +33,20 @@
                     <ul>
                         <li><a href="index.php">Acceuil</a></li>
                         <li><a href="edit.php">Ajouter </a></li>
+                        <li><a href="logout.php">Déconnexion</a></li>
                     </ul>
+                    <div class="user-layout">
+                        <div class="user-content">
+                            <a href="">
+                                <span>Macaron</span>
+                                <img src="img/macron.jpg" alt="Emmanuel Macron">
+                            </a>
+                            
+                        </div>
+                        <a href="logout.php">
+                            <i class="material-icons icon icon-exit">exit_to_app</i>
+                        </a>
+                    <div>
                 </nav>
                     
             <!--Fin du Header-->
