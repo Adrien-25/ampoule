@@ -48,8 +48,7 @@ input,select{
     padding: .5rem;
     line-height: 1.5;
     color: #495057;
-    border: 1px solid #dddddd;
-    /*border-radius: 0.2rem;*/  
+    border: 1px solid #dddddd; 
     border-radius: 0.2rem 0 0.2rem 0.2rem;
 }
 input:focus,select:focus{
@@ -99,6 +98,7 @@ body{
     align-items: center;
     justify-content: space-between;
     width: inherit;
+    min-height: 66px;
 }
 .header-nav ul{
     display: flex;
@@ -144,6 +144,29 @@ body{
     padding: 0.5rem; 
     display: none;
 }
+.user-layout{
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+}
+.user-content a{
+    display: flex;
+    align-items: center;
+    padding: 8px 1rem;
+    color: black;
+}
+.user-content:hover{
+    background-color: #eff1f5;
+}
+.user-content span{
+    margin-right: 8px;
+}
+.user-content img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+/*Contenu de la page*/
 .search-layout{
     margin: 1rem;
 }
@@ -203,8 +226,43 @@ body{
 .icon-add,.icon-home{
     padding: 0.5rem;
 }
-
-
+.login-page{
+    background-image: linear-gradient(120deg, black , #FF3333);
+    min-height: 100vh;
+}
+.login-layout{
+    padding: 20vh 0;
+}
+.login-form h1{
+    text-align: center;
+    margin-bottom: 60px;
+}
+.login-form{
+    width: 360px;
+    background-color: #ffffff;
+    padding: 80px 40px;
+    border-radius: 10px;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+}
+.login-form input{
+    margin: 30px 0;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-radius: 0;
+}
+.login-form button{
+    color: white;
+    width: 100%;
+    margin: 30px 0;
+    border-radius: 0;
+    background-image: linear-gradient(120deg, black , #FF3333);
+}
+.login-form button:hover{
+    background-image: linear-gradient(120deg, rgba(0, 0, 0, 0.719) , #ff0000);
+}
 /*Table*/
 .table-container{
     padding: 0.6rem;
@@ -274,9 +332,10 @@ body{
         flex-direction: column;
         margin:100px auto 0 auto;
     }
-    .header-nav{
+    .header-nav ul{
         display: none;
     }
+   
     /*Table responsive*/
     .custom-table thead tr{
         position: absolute;
@@ -339,7 +398,28 @@ body{
         min-height: 75px;
     }
     .header-nav{
+        justify-content: flex-end;
+    }
+    .header-nav ul{
         display: none;
+    }
+    .user-layout{
+        margin-right: 1rem;
+    }
+    .user-content a{
+        padding: 17px 1rem;
+    }
+    .user-content a:hover{
+        background-color: red;
+    }
+    .user-content a span{
+        color: white;
+    }
+    .user-content>a{
+        color: white;
+    }
+    .icon-exit{
+        color: white;
     }
     #nav-btn{
         display: flex;
@@ -425,7 +505,7 @@ body{
     .header-brand .logo{
         min-height: 75px;
     }
-    .header-nav{
+    .header-nav ul{
         display: none;
     }
     #nav-btn{
