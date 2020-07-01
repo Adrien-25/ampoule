@@ -142,7 +142,7 @@ body{
     margin-left: 2rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: inherit;
     min-height: 66px;
 }
@@ -184,9 +184,6 @@ body{
     align-items: center;
     padding: 8px 1rem;
     color: black;
-}
-.user-content:hover{
-    background-color: #eff1f5;
 }
 .user-content span{
     margin-right: 8px;
@@ -336,8 +333,8 @@ body{
     background-color: #ffffff;
     margin: 0 auto;
     display: flex;
-    max-width: 700px;
     flex-direction: column;
+    width: 90%;
 }
 .form-edit{
     display: flex;
@@ -353,6 +350,7 @@ body{
 }
 .label-layout{
     width: 50%;
+    font-size: 1.4rem;
 }
 .form-group input,.form-group select{
     width: 100%;
@@ -363,12 +361,81 @@ body{
 }
 .form-edit .form-btn .btn{
     font-size: 1.4rem;
+    border-radius: 30px;
+    padding: 1rem 0.5rem;
+    width: 200px;
 }
 
 .check-layout{
     margin: 1rem 0 1rem 0;
     color: black;
     font-size: 1rem;
+}
+#myBtn{
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* The Modal (background) */
+.modal{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid #888;
+    max-width: 300px;
+    text-align: center;
+}
+.modal-header{
+    background-color: red;
+    padding: 1rem 1rem;
+    color: white;
+}
+.modal-header p{
+    font-size: 1.2rem;
+}
+.modal-body{
+    padding: 1.5rem;
+}
+.modal-body i{
+    font-size: 4em;
+    font-weight: bold;
+}
+.modal-footer{
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid rgba(0,0,0,0.3);
+}
+.modal-footer a{
+    padding: .84rem 2.14rem;
+    margin: 1rem;
+}
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
 /*Responsive*/
 @media only screen and (min-width : 991px) and (max-width : 1324px){
@@ -481,14 +548,12 @@ body{
     #nav-btn{
         display: flex;
     }
-    h1{
-        display: none;
-    }
     .search-layout{
         display: none;
     }
     .form-group{
         flex-direction: column;
+        padding : 0 0 1.5rem 0;
     }
     .label-layout{
         width: 100%;
@@ -570,6 +635,7 @@ body{
     }
     .form-group{
         flex-direction: column;
+        margin : 0 0 1.5rem 0;
     }
     .label-layout{
         width: 100%;
@@ -588,9 +654,6 @@ body{
     }
     #nav-btn{
         display: flex;
-    }
-    h1{
-        display: none;
     }
     .search-layout{
         display: none;
