@@ -5,6 +5,7 @@ require_once('db.php');
 if(empty($_SESSION['username'])){
     header('Location: login.php');
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +13,7 @@ if(empty($_SESSION['username'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gardien</title>
-    <link rel="stylesheet" type="text/css" href="style.css" ></link>
+    <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" type="image/png" href="img/favicon2.png"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
@@ -30,16 +31,11 @@ if(empty($_SESSION['username'])){
                     </a>
                 </div>
                 <nav class="header-nav">
-                    <ul>
-                        <li><a href="index.php">Acceuil</a></li>
-                        <li><a href="edit.php">Ajouter </a></li>
-                        <li><a href="logout.php">Déconnexion</a></li>
-                    </ul>
                     <div class="user-layout">
                         <div class="user-content">
                             <a href="">
-                                <span>Macaron</span>
-                                <img src="img/macron.jpg" alt="Emmanuel Macron">
+                                <span>Zidane</span>
+                                <img src="img/zidane.jpg" alt="Zinédine Zidane">
                             </a>
                             
                         </div>
@@ -100,6 +96,7 @@ if(empty($_SESSION['username'])){
                             
                             //Gestion des formats des dates en français
                             $intlDateFormater = new IntlDateFormatter('fr_FR', IntlDateFormatter::SHORT,IntlDateFormatter::NONE);
+                            //On test si c'est une recherche
                             if(!isset($_POST['search'])){
                                 //On parcours le résultat et imprime à l'écran les données
                                 //pour parcourir toutes es lignes on fait une boucle
@@ -112,7 +109,7 @@ if(empty($_SESSION['username'])){
                                     echo '<td>'.$row['puissance'].' W</td>';
                                     echo '<td>'.$row['marque'].'</td>';
                                     echo '<td><a href="edit.php?edit=1&id='.$row['id'].'"><i class="material-icons icon">edit</i></a></td>';
-                                    echo '<td><a href="delete.php?id='.$row['id'].'"><i class="material-icons icon">delete_outline</i><a/></td>';
+                                    echo '<td><button name="delete.php?id='.$row['id'].'" id="myBtn" class="btnDelete" onclick="delete()"><i class="material-icons icon">delete_outline</i></button></td>';
                                     echo '</tr>';
                                 }
                             }else{
@@ -127,7 +124,7 @@ if(empty($_SESSION['username'])){
                                         echo '<td>'.$row['puissance'].' W</td>';
                                         echo '<td>'.$row['marque'].'</td>';
                                         echo '<td><a href="edit.php?edit=1&id='.$row['id'].'"><i class="material-icons icon">edit</i></a></td>';
-                                        echo '<td><a href="delete.php?id='.$row['id'].'"><i class="material-icons icon">delete_outline</i><a/></td>';
+                                        echo '<td><button name="delete.php?id='.$row['id'].'" id="myBtn" class="btnDelete" onclick="delete()"><i class="material-icons icon">delete_outline</i></button></td>';
                                         echo '</tr>';
                                         $test = 0;  
                                     }
@@ -138,12 +135,6 @@ if(empty($_SESSION['username'])){
                 </div>
                 <!--Fin Table-->
                 <?php
-                /*
-                Aucune ampoule -->  Aucune ampoule
-                Ampoule, pas de recherche --> Rien
-                Ampoule, recherche trouvé --> Rien
-                Ampoule, recherche non trouvé --> Aucune ampoule ne correspond à votre recherche
-                */
                 //Si le tableau n'a aucun élément il affice aucun stagiaire
                 if(count($result) === 0){
                     echo '<p class="text-center font-size-2">Aucune ampoule</p>';
@@ -158,6 +149,25 @@ if(empty($_SESSION['username'])){
             <!--Fin du contenu de la page-->
     </div>
     <!--Fin de couverture de page-->
-<script src="app.js"></script> 
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <p>Supprimer l'ampoule n°<span id="modal-span"></span> </p>
+            </div>
+            <div class="modal-body">
+                <i class="material-icons icon icon-close">close</i>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn" id="modal-yes">OUI</a>
+                <a href="#" class="btn" id="modal-no">NON</a>
+
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>
+<!--echo '<td><a href="delete.php?id='.$row['id'].'">
+                                                        <i class="material-icons icon">delete_outline</i>
+                                                    <a/></td>';-->
