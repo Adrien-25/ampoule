@@ -4,6 +4,7 @@
   if(!empty($_SESSION['username'])){
     header('Location: index.php');
   }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,7 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Gardien</title>
-    <link rel="stylesheet" type="text/css" href="style.css" ></link>
+    <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" type="image/png" href="img/favicon2.png"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
@@ -19,35 +20,45 @@
 <div class="login-page">
   
   <?php
-  $username = 'Macron';
-  $password = 'chocolat';
-  $msg = '';
+  $username = "";
+  $pass = "";
+  $msg = "";
 
-  if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {
-    if ($_POST['username'] == $username && $_POST['password'] == $password) {
-      $_SESSION['valid'] = true;
-      $_SESSION['timeout'] = time();
-      $_SESSION['username'] = $username; 
-      header('Location: index.php');
-    }else {
-      $msg = 'Wrong username or password';
+  if(!isset($_SESSION['username'])){   
+    //Préparation de la requête
+    $sql= 'SELECT id, username, pass FROM utilisateur';
+    $sth = $dbh->prepare($sql);
+    
+    //Exécution de la requête
+    $sth->execute();
+  
+    //On recupère le résultat de la requête
+    $result = $sth->fetch(PDO::FETCH_ASSOC); 
+    $username = $result['username'];
+    $pass = $result['pass'];
+    
+    if(isset($_POST['username'])){
+      if ($_POST['username'] == $username && $_POST['pass'] == $password) {
+        $_SESSION['valid'] = true;
+        $_SESSION['timeout'] = time();
+        $_SESSION['username'] = $username; 
+        header('Location: index.php');
+      }else {
+        $msg = 'Mauvais indentifiant ou mot de passe!';
+      }
     }
   }
   ?>
-
   <div class = "login-layout">
     <form class = "login-form" role = "form" action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post">
-      <h1>Login</h1> 
+      <h1>Authentification</h1> 
       <input type = "text" class = "form-control" 
-          name = "username" placeholder = "Username = <?=$username; ?>"
+          name = "username" placeholder = "Identifiant"
           required autofocus>
       <input type = "password" class = "form-control"
-          name = "password" placeholder = "Password = <?=$password; ?>" required>
-      <button class = "btn link-btn" type = "submit" name = "login">Login</button>
+          name = "password" placeholder = "Mot de passe" required>
+      <button class = "btn link-btn" type = "submit" name = "login">Connexion</button>
     </form>
-
-    
-    
   </div> 
 </div>
 </body>
