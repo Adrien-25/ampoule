@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter une ampoule</title>
-    <link rel="stylesheet" type="text/css" href="style.css" ></link>
+    <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" type="image/png" href="img/favicon2.png"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
@@ -30,11 +30,6 @@
                     </a>
                 </div>
                 <nav class="header-nav">
-                    <ul>
-                        <li><a href="index.php">Acceuil</a></li>
-                        <li><a href="edit.php">Ajouter </a></li>
-                        <li><a href="logout.php">Déconnexion</a></li>
-                    </ul>
                     <div class="user-layout">
                         <div class="user-content">
                             <a href="">
