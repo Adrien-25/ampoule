@@ -1,6 +1,6 @@
 <?php
     require_once('db.php');
-
+    
     //Tester l'existence de la variable d'url
     if(isset($_GET['id'])){
         //Requête sql de suppression avec marqueur de paramètre
