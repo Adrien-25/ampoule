@@ -109,7 +109,7 @@ if(empty($_SESSION['username'])){
                                     echo '<td>'.$row['puissance'].' W</td>';
                                     echo '<td>'.$row['marque'].'</td>';
                                     echo '<td><a href="edit.php?edit=1&id='.$row['id'].'"><i class="material-icons icon">edit</i></a></td>';
-                                    echo '<td><button name="delete.php?id='.$row['id'].'" id="myBtn" class="btnDelete" onclick="delete()"><i class="material-icons icon">delete_outline</i></button></td>';
+                                    echo '<td><button name="delete.php?id='.$row['id'].'" id="myBtn" class="btnDelete" onclick="confirmation('.$row['id'].')"><i class="material-icons icon">delete_outline</i></button></td>';
                                     echo '</tr>';
                                 }
                             }else{
@@ -124,7 +124,7 @@ if(empty($_SESSION['username'])){
                                         echo '<td>'.$row['puissance'].' W</td>';
                                         echo '<td>'.$row['marque'].'</td>';
                                         echo '<td><a href="edit.php?edit=1&id='.$row['id'].'"><i class="material-icons icon">edit</i></a></td>';
-                                        echo '<td><button name="delete.php?id='.$row['id'].'" id="myBtn" class="btnDelete" onclick="delete()"><i class="material-icons icon">delete_outline</i></button></td>';
+                                        echo '<td><button name="delete.php?id='.$row['id'].'" id="myBtn" class="btnDelete" onclick="confirmation('.$row['id'].')"><i class="material-icons icon">delete_outline</i></button></td>';
                                         echo '</tr>';
                                         $test = 0;  
                                     }
@@ -153,21 +153,17 @@ if(empty($_SESSION['username'])){
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
-                <p>Supprimer l'ampoule n°<span id="modal-span"></span> </p>
+                <p>Supprimer l'ampoule n°<span id="modal-span"></span> ?</p>
             </div>
             <div class="modal-body">
                 <i class="material-icons icon icon-close">close</i>
             </div>
             <div class="modal-footer">
-                <a href="#" class="btn" id="modal-yes">OUI</a>
-                <a href="#" class="btn" id="modal-no">NON</a>
-
+                <a href="#" class="btn" id="modal-yes" onclick="trash()">OUI</a>
+                <a href="#" class="btn" id="modal-no" >NON</a>
             </div>
         </div>
     </div>
     <script src="app.js"></script>
 </body>
 </html>
-<!--echo '<td><a href="delete.php?id='.$row['id'].'">
-                                                        <i class="material-icons icon">delete_outline</i>
-                                                    <a/></td>';-->
