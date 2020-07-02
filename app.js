@@ -1,42 +1,33 @@
-// Get the modal
+// Récupération de l'id du modal, de l'id des boutons du modal et du span du modal
 var modal = document.getElementById("myModal");
 var ModalBtnOui = document.getElementById('modal-yes');
 var ModalBtnNon = document.getElementById('modal-no');
-
 var modalSpan = document.getElementById('modal-span');
 
-const btnClass = document.getElementsByClassName('btnDelete');
-console.log(btnClass);
-
-
-
-
-cliquer = delete(this.id);
-console.log(cliquer);
-
-// When the user clicks on the button, open the modal
-btnClass.onclick = function() {
-  modal.style.display = "block";
-}
-
-//Quand l'utilisateur clique sur le bouton non, ferme le modale
+// Quand l'utilisateur clique sur le bouton non, ferme le modale
 ModalBtnNon.onclick = function() {
   modal.style.display = "none";
 }
-
-// When the user clicks anywhere outside of the modal, close it
+// Quand l'utilisateur clique n'importe ou en dehors du modale, ferme le modale
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
 }
 
-//Redirection du bouton oui sur le lien de la page delete
-ModalBtnOui.onclick = function(){
-  document.location.href = IdDelete;
+// Paramètrage du clique sur la poubelle
+function confirmation(id){ 
+  //Récupération de l'id de l'ampoule à supprimer
+  const confirm=document.getElementById("ModalBtnOui");
+  //Affichage du modal lorsque l'utilisateur clique sur la poubelle
+  modal.style.display = "block";
+  //Affichage de l'id a supprimer dans le modal
+  modalSpan.innerText = id;
+  //Affectation de l'id 
+  idDelete = id;
 }
 
-
-
-
-
+// Paramètrage du clique sur le bouton oui du modal
+function trash() {
+  location.replace("delete.php?id="+idDelete);
+}
