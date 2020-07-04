@@ -29,12 +29,17 @@
                         Gestion ampoules
                     </a>
                 </div>
+                <div class="text-center">
+                    <a href=index.php class="link-btn">
+                        <i class="material-icons icon icon-home">home</i>
+                    </a>
+                </div>
                 <nav class="header-nav">
                     <div class="user-layout">
                         <div class="user-content">
                             <a href="">
-                                <span>Macaron</span>
-                                <img src="img/macron.jpg" alt="Emmanuel Macron">
+                                <span><?=$_SESSION['username']?></span>
+                                <img src="img/zidane.jpg" alt="Zinédine zidane">
                             </a>
                             
                         </div>
@@ -59,11 +64,7 @@
                 <div class="heading-layout">
                     <h1><?=$type?> une ampoule</h1>
                 </div>
-                <div class="text-center">
-                    <a href=index.php class="link-btn">
-                        <i class="material-icons icon icon-home">home</i>
-                    </a>
-                </div>
+                
                   
                 <?php
                 //On va vérifier si on réçoit le formulaire
