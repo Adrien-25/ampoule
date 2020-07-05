@@ -110,31 +110,31 @@
                         $date = trim($_POST['date_changement']);
                     }else{
                         $error = true;
-                        $error_form[0] = "La date";
+                        $error_form[0] = 1;
                     }
                     if(strlen(trim($_POST['etage']))!==0){
                         $etage = trim($_POST['etage']);
                     }else{
                         $error = true;
-                        $error_form[1] = "L'étage";
+                        $error_form[1] = 1;
                     }
                     if(strlen(trim($_POST['position']))!==0){
                         $position = trim($_POST['position']);
                     }else{
                         $error = true;
-                        $error_form[2] = "La position";
+                        $error_form[2] = 1;
                     }
                     if(strlen(trim($_POST['puissance']))!==0){
                         $puissance = trim($_POST['puissance']);
                     }else{
                         $error = true;
-                        $error_form[3] = "La puissance";
+                        $error_form[3] = 1;
                     }
                     if(strlen(trim($_POST['marque']))!==0){
                         $marque = trim($_POST['marque']);
                     }else{
                         $error = true;
-                        $error_form[4] = "La marque";
+                        $error_form[4] = 1;
                     }
                     if(isset($_POST['edit']) && isset($_POST['id'])){
                         $id = htmlentities($_POST['id']);
@@ -174,17 +174,21 @@
                 
                 ?>
                 <div class="form-layout">
-                    <form action="" method="post" class="form-edit">
+                    <form  action="" method="post" class="form-edit" id="form-edit">
                         <div class="form-group">
                             <div class="label-layout">
-                                <label for="date_changement">Date de changement</label>
+                                <label for="date_changement">Date</label>
                             </div>
-                            <input type="date" name="date_changement" id="date_changement" placeholder="Date de changement" value="<?=$date; ?>">
+                            <div class="input-layout">
+                                <input type="date" name="date_changement" id="date_changement" placeholder="Date de changement" value="<?=$date; ?>">
+                                <small id="help_date">* obligatoire</small>
+                            </div>
                         </div>
                         <div class="form-group">
                             <div class="label-layout" >
                                 <label for="etage">Étage</label>
                             </div>
+                            <div class="input-layout">
                             <select name="etage" id="etage">
                                 <option value=''>--Choisissez l'étage--</option>
                                 <?php 
@@ -197,40 +201,50 @@
                                     }
                                 ?>
                                 </select>
+                                <small id="help_etage">* obligatoire</small>
+                            </div>
                         </div>
                         <div class="form-group">
                             <div class="label-layout">
                                 <label for="position">Position</label>
                             </div>
-                            <select name="position" id="position">
-                                <?php 
-                                    if(!isset($_GET['edit'])){
-                                        echo "<option value=''>--Choisissez la position--</option>";
-                                    }
-                                    $Tab_Position = array('Côté gauche','Côté droit','Fond');
-                                    foreach($Tab_Position as $item){
-                                        $selected = "";
-                                        if($item == $position){
-                                            $selected = "selected";
+                            <div class="input-layout">
+                                <select name="position" id="position">
+                                    <?php 
+                                        if(!isset($_GET['edit'])){
+                                            echo "<option value=''>--Choisissez la position--</option>";
                                         }
-                                        echo  "<option value='$item' $selected>$item</option>";
-                                        
-                                    }
-                                ?>
+                                        $Tab_Position = array('Côté gauche','Côté droit','Fond');
+                                        foreach($Tab_Position as $item){
+                                            $selected = "";
+                                            if($item == $position){
+                                                $selected = "selected";
+                                            }
+                                            echo  "<option value='$item' $selected>$item</option>";
+                                        }
+                                    ?>
                                 </select>
-                                    
+                                <small id="help_position">* obligatoire</small>
+                            </div>
                         </div>
+                        
                         <div class="form-group">
                             <div class="label-layout">
                                 <label for="puissance">Puissance (en W)</label>
                             </div>
-                            <input type="text" name="puissance" id="puissance" placeholder="Puissance" value="<?=$puissance; ?>">
+                            <div class="input-layout">
+                                <input type="text" name="puissance" id="puissance" placeholder="Puissance" value="<?=$puissance; ?>">
+                                <small id="help_puissance">* obligatoire</small>
+                            </div>
                         </div>
                         <div class="form-group">
                             <div class="label-layout">
                                 <label for="marque">Marque</label>
-                                </div>
-                            <input type="text" name="marque" id="marque" placeholder="Marque" value="<?=$marque; ?>">
+                            </div>
+                            <div class="input-layout">
+                                <input type="text" name="marque" id="marque" placeholder="Marque" value="<?=$marque; ?>">
+                                <small id="help_marque">* obligatoire</small>
+                            </div>
                         </div>
                         
                         <div class="form-btn">
@@ -241,7 +255,7 @@
                                     $textButton = "Ajouter";
                                 }
                             ?>
-                            <button type="submit" class="btn"><?=$textButton ?></button>
+                            <button type="button" class="btn" onclick="loadDoc()"><?=$textButton ?></button>
                         </div>
                         <?php 
                             if(isset($_GET['id']) && isset($_GET['edit'])){
@@ -252,29 +266,10 @@
                             }
                         ?>
                     </form>
-                    <?php 
-                        echo'<div class="check-layout">';
-                        $mauvaise_saisie = False;
-                        foreach($error_form as $item){
-                            if (!is_int($item)){
-                                $mauvaise_saisie = True;
-                            }
-                        }
-                        if ($mauvaise_saisie == True) {
-                            echo'Veuillez saisir : <br>';
-                        }
-                        
-                        foreach($error_form as $test){
-                            
-                            if (!is_int($test)){
-                                echo '• '.$test.'<br>';
-                            }
-                        }
-                        echo'</div>';
-                    ?>
                 </div>
             </div>
         </div>
     </div>
+    <script src="app2.js"></script>
 </body>
 </html>
