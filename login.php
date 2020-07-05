@@ -31,12 +31,13 @@
     
     //Exécution de la requête
     $sth->execute();
-  
+    
     //On recupère le résultat de la requête
     $result = $sth->fetch(PDO::FETCH_ASSOC); 
+
     $username = $result['username'];
-    $pass = $result['pass'];
-    
+    $password = $result['pass'];
+
     if(isset($_POST['username'])){
       if ($_POST['username'] == $username && $_POST['pass'] == $password) {
         $_SESSION['valid'] = true;
@@ -44,7 +45,7 @@
         $_SESSION['username'] = $username; 
         header('Location: index.php');
       }else {
-        $msg = 'Mauvais indentifiant ou mot de passe!';
+        $msg = 'Mauvais indentifiant ou mot de passe';
       }
     }
   }
@@ -56,7 +57,8 @@
           name = "username" placeholder = "Identifiant"
           required autofocus>
       <input type = "password" class = "form-control"
-          name = "password" placeholder = "Mot de passe" required>
+          name = "pass" placeholder = "Mot de passe" required>
+      <p class="login-msg"><?=$msg ?></p>
       <button class = "btn link-btn" type = "submit" name = "login">Connexion</button>
     </form>
   </div> 
