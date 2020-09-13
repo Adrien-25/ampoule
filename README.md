@@ -1,8 +1,8 @@
 # Dashboard gestion ampoule
 
-Projet de dashboard, gestion d'achat d'ampoule de coproprété
+Projet de dashboard, gestion d'achat d'ampoule de coproprété.
 <br/>
-Ce dasboard devra être sécurisé par un système de login
+Ce dasboard devra être sécurisé par un système de login.
 
 
 ## Instruction 
