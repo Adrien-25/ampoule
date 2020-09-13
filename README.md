@@ -3,7 +3,7 @@
 Projet de dashboard, gestion d'achat d'ampoule de coproprété.
 <br/>
 Ce dasboard devra être sécurisé par un système de login.
-## Lien du Dashboard
+## Lien du dashboard
 <https://adriens.promo-39.codeur.online/ampoule>
 
 ## Instruction 
